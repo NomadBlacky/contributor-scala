@@ -38,13 +38,13 @@ scalacOptions ++= Seq(
     "-unchecked",
     //"-Ywarn-unused-import",
     "-Ywarn-nullary-unit",
-    "-Xfatal-warnings",
+    //"-Xfatal-warnings",
     "-Xlint",
     //"-Yinline-warnings",
     "-Ywarn-dead-code",
     "-Xfuture")
 
-initialCommands := "import org.nomadblacky.contributor._"
+//initialCommands := "import org.nomadblacky.contributor._"
 
 SbtScalariform.scalariformSettings
 
