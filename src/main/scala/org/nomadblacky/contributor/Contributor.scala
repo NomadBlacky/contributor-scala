@@ -14,9 +14,12 @@ object Contributor {
 
   lazy val logger: Logger = Logger.getLogger(this.getClass.getName)
 
-  def getDataCount(userName: String, now: DateTime): Int = {
+  def getDataCount(userName: String, now: DateTime): Option[Int] = {
     val doc = JsoupBrowser().get(s"https://github.com/users/$userName/contributions")
-    val result = doc >> elements("rect") >/~ validator(attr("data-date"))(_ == now.toString("yyyy-MM-dd")) >> attr("data-count")
-    result.getOrElse("0").toInt
+    val rects = doc >> elements("rect")
+    rects
+      .find(_.attr("data-date") == now.toString("yyyy-MM-dd"))
+      .map(_.attr("data-count"))
+      .map(_.toInt)
   }
 }
