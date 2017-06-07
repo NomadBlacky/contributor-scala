@@ -1,7 +1,7 @@
 package org.nomadblacky.contributor
 
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 import scala.io.Source
 

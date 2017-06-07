@@ -21,6 +21,7 @@ libraryDependencies ++= Seq(
   "com.amazonaws" % "aws-lambda-java-events" % "1.3.0",
 
   "net.ruippeixotog" %% "scala-scraper" % "2.0.0-RC2",
+  "org.scalaj" %% "scalaj-http" % "2.3.0",
 
   "org.scalatest" %% "scalatest" % "3.0.0" % "test",
   "org.scalacheck" %% "scalacheck" % "1.13.4" % "test"
