@@ -30,17 +30,17 @@ class Handler extends RequestHandler[Request, Response] {
     logger.info(s"Today's contribute counts: $count")
 
     if (count < 1) {
-      postToSlack(":warning:", "You have not contributed GitHub today!")
+      postToSlack(":warning:", "You have not contributed to GitHub today!")
     }
 
     Response(msg = s"OK: $count")
   }
 
   def postToSlack(iconEmoji: String, msg: String, webHookUrl: String = webHookUrl): Unit = {
-    val json = s"""{"icon_emoji": $iconEmoji, "text": "$msg"}"""
+    val json = s"""{"icon_emoji": "$iconEmoji", "text": "$msg"}"""
     logger.info(s"HTTP POST: $webHookUrl")
     logger.info(s"Params: $json")
-    Http(webHookUrl).postForm(Seq("payload" → json)).asString
+    Http(webHookUrl).postForm(Seq("payload" → json)).asString.throwError
   }
 }
 
